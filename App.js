@@ -1,7 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import codePush from 'react-native-code-push'
 
-export default class App extends React.Component {
+const codePushOptions = {
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  installMode: codePush.InstallMode.ON_NEXT_RESUME
+}
+
+class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -21,3 +27,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default codePush(codePushOptions)(App)
